@@ -1,7 +1,7 @@
--   **FastAPI (Python)** -- Backend API\
--   **PostgreSQL (Neon)** -- Database\
--   **Next.js + React** -- Frontend\
--   **Inline CSS** -- No Tailwind
+-   **FastAPI (Python)** -- Backend API
+-   **PostgreSQL (Neon)** -- Database
+-   **Next.js + React** -- Frontend
+
 
 # How to Run the Project Locally
 
@@ -30,7 +30,7 @@ SSL is handled in `connect_args={"sslmode": "require"}`.
 
 ## Run the database setup file
 
-    psql "<your_neon_connection_string>" -f database.sql
+    psql "<your_neon_connection_string>" -f seed.sql
 
 This creates the `campaigns` table and inserts 10 sample rows.
 
