@@ -3,25 +3,8 @@
 - **Next.js + React** – Frontend  
 - **Inline CSS** – No Tailwind (clean and simple)
 
----
 
-## 📁 Project Structure
-
-project/
-├── backend/
-│ ├── main.py
-│ ├── database.py
-│ ├── models.py
-│ ├── requirements.txt
-│ └── database.sql
-├── frontend/
-│ ├── src/app/page.tsx
-│ └── src/app/layout.tsx
-└── README.md
-
----
-
-# 🚀 How to Run the Project Locally
+#  How to Run the Project Locally
 
 ## Clone the repository
 
