@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+- **FastAPI (Python)** – Backend API  
+- **PostgreSQL (Neon)** – Database  
+- **Next.js + React** – Frontend  
+- **Inline CSS** – No Tailwind (clean and simple)
 
-## Getting Started
+---
 
-First, run the development server:
+## 📁 Project Structure
 
-```bash
+project/
+├── backend/
+│ ├── main.py
+│ ├── database.py
+│ ├── models.py
+│ ├── requirements.txt
+│ └── database.sql
+├── frontend/
+│ ├── src/app/page.tsx
+│ └── src/app/layout.tsx
+└── README.md
+
+---
+
+# 🚀 How to Run the Project Locally
+
+## Clone the repository
+
+git clone <your_repo_url>
+cd project
+
+---
+
+#  Backend Setup (FastAPI + Neon)
+
+## Install Python dependencies
+
+cd backend
+pip install -r requirements.txt
+
+## Add environment variable
+
+Create `.env` inside `backend/`:
+
+DATABASE_URL=postgresql+psycopg2://<user>:<password>@<neon_host>/<dbname>
+
+⚠️ Must use **psycopg2** URL (sync engine).  
+SSL is handled in `connect_args={"sslmode": "require"}`.
+
+---
+
+##  Run the database setup file
+
+psql "<your_neon_connection_string>" -f database.sql
+
+This creates the `campaigns` table and inserts 10 sample rows.
+
+---
+
+## Start FastAPI server
+
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+Backend will run at:
+
+http://localhost:8000
+
+Test endpoint:
+
+http://localhost:8000/campaigns
+
+---
+
+# Frontend Setup (Next.js)
+
+## Install frontend dependencies
+
+cd frontend
+npm install
+
+## Add frontend environment variable
+
+Create `.env.local`:
+
+NEXT_PUBLIC_API_URL=http://localhost:8000
+
+When deployed:
+
+NEXT_PUBLIC_API_URL=https://your-backend-production-url
+
+## Start the frontend
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Frontend runs at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
